@@ -2,7 +2,6 @@
 # Time calculation library for decimal time
 
 import datetime
-import time
 import tkinter
 from tkinter import ttk
 
@@ -19,18 +18,19 @@ def convert_timestamp_deciseconds():
     dours = int((decitime / 100000 - int(decitime / 100000)) * 10)
     if dours == 10:
         dours = 0
-    #time_string = "\033[1;35m" + set_leading_zero(str(dours)) + ":" + \
+    # time_string = "\033[1;35m" + set_leading_zero(str(dours)) + ":" + \
     time_string = set_leading_zero(str(dours)) + ":" + \
-                                set_leading_zero(str(dinuts)) + ":" + \
+        set_leading_zero(str(dinuts)) + ":" + \
         set_leading_zero(str(deconds))
     klocka_string.set(time_string)
     klocka.after(400, convert_timestamp_deciseconds)
-    #return time_string
+    # return time_string
 
 
 def set_leading_zero(string):
     string = string.zfill(2)
     return string
+
 
 # window
 window = tkinter.Tk()
@@ -38,16 +38,16 @@ window.title('Decimal tid')
 window.geometry('300x150')
 klocka_string = tkinter.StringVar()
 klocka = ttk.Label(
-        master = window, 
-        font=("Helvetica", 22), 
-        textvariable = klocka_string)
+        master=window,
+        font=("Helvetica", 22),
+        textvariable=klocka_string)
 klocka.pack()
 
 convert_timestamp_deciseconds()
 # run
 window.mainloop()
 
-#while True:
+# while True:
 #    print(convert_timestamp_deciseconds(), end='\r')
 #    time.sleep(0.864)
-    # time.sleep(0.108)
+#    time.sleep(0.108)
